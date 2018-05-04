@@ -1,10 +1,10 @@
 <template>
     <div class="center">
         <div class="wrapper">
-            <div v-bind:class="['cabo', cabo]"></div>
-            <div v-bind:class="['kiawah', kiawah]"></div>
-            <div v-bind:class="['huron', huron]"></div>
-            <div v-bind:class="['omaha', omaha]"></div>
+            <div v-bind:class="['cabo', cabo]">Cabo</div>
+            <div v-bind:class="['kiawah', kiawah]">Kiawah</div>
+            <div v-bind:class="['huron', huron]">Huron</div>
+            <div v-bind:class="['omaha', omaha]">Omaha</div>
         </div>
     </div>
 </template>
@@ -26,7 +26,8 @@
                 cabo: "empty",
                 huron: "empty",
                 kiawah: "empty",
-                omaha: "empty"
+                omaha: "empty",
+                user: "brian"
             }
         }, methods: {
             getServerState(){
@@ -37,6 +38,8 @@
                     that.cabo = response.data.cabo ? "empty" : "filled";
                     that.kiawah = response.data.kiawah ? "empty" : "filled";
                     that.omaha = response.data.omaha ? "empty" : "filled";
+                    setTimeout(that.getServerState, 1000);
+                }).catch(function(){
                     setTimeout(that.getServerState, 1000);
                 });
             },
